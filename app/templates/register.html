@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <h1>Регистрация</h1>
+    <form method="post" action="{{ url_for('register') }}">
+        {{ form.hidden_tag() }}
+            <div>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}
+                {% if form.username.errors %}
+                    <div style="color: red;">{{ form.username.errors[0] }}</div>
+                {% endif %}
+            </div>
+            <div>
+                {{ form.email.label }}<br>
+                {{ form.email(size=32) }}
+                {% if form.email.errors %}
+                    <div style="color: red;">{{ form.email.errors[0] }}</div>
+                {% endif %}
+            </div>
+            <div>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}
+            </div>
+            <div>
+                {{ form.confirm_password.label }}<br>
+                {{ form.confirm_password(size=32) }}
+                {% if form.confirm_password.errors %}
+                    <div style="color: red;">{{ form.confirm_password.errors[0] }}</div>
+                {% endif %}
+            </div>
+            <div>
+                {{ form.submit() }}
+            </div>
+    </form>
+{% endblock %}

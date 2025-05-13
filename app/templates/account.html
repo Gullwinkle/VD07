@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+    Account
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32, placeholder='Оставьте пустым, чтобы не менять') }}
+    </div>
+    <div>
+        {{ form.email.label }}<br>
+        {{ form.email(size=32, placeholder='Оставьте пустым, чтобы не менять') }}
+    </div>
+    <div>
+        {{ form.old_password.label }}<br>
+        {{ form.old_password(size=32) }} <small>(обязательно для изменений)</small>
+    </div>
+    <div>
+        {{ form.new_password.label }}<br>
+        {{ form.new_password(size=32, placeholder='Оставьте пустым, чтобы не менять') }}
+    </div>
+    <div>
+        {{ form.confirm_password.label }}<br>
+        {{ form.confirm_password(size=32) }}
+        {% if form.confirm_password.errors %}
+            <div style="color: red;">{{ form.confirm_password.errors[0] }}</div>
+        {% endif %}
+    </div>
+    <div>{{ form.submit() }}</div>
+</form>
+{% endblock %}
